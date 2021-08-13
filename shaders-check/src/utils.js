@@ -18,7 +18,6 @@ export default class Utils {
             // Make everything beautiful
             let topColor =  [Utils.BEAM.style.appsGradientOffset, "px,"].join('')
             let mainColor = [Utils.BEAM.style.appsGradientTop, "px,"].join('')
-           console.log(Utils.BEAM.style.content_main)
             document.querySelector('.App').style.color = Utils.BEAM.style.content_main
             document.querySelectorAll('.container').forEach(item => {
                 item.style.backgroundImage = `linear-gradient(to bottom, 
@@ -107,7 +106,6 @@ export default class Utils {
             (floatValue > 0 && (floatValue < MIN_AMOUNT || floatValue > MAX_AMOUNT))) {
           result = false;
         }
-        console.log(floatValue)
         return result;
     }
 }

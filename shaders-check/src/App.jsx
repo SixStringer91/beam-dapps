@@ -8,10 +8,9 @@ function App() {
   const [beamApi, setBeamApi] = useState(null)
   useEffect(() => {
     Utils.onLoad( async(beamAPI) => {
-      const beam = beamAPI
-      // return setBeamApi(beam)
-    },[]);
-  })
+      setBeamApi(beamAPI)
+    });
+  },[])
   console.log(beamApi)
   return (
     <div className="App">

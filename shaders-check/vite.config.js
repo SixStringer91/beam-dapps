@@ -8,4 +8,8 @@ export default defineConfig({
   build: {
     sourcemap: true,
   },
+  server: {
+    port: 5000,
+    strictPort: true, // throw error if port in use
+  }
 })
