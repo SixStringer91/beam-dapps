@@ -72,6 +72,7 @@ export default class Utils {
         xhr.onreadystatechange = function() {
             if(xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
+                    console.log(xhr)
                     let buffer    = xhr.response
                     let byteArray = new Uint8Array(buffer);
                     let array     = Array.from(byteArray)

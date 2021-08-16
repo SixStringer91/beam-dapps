@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import Utils from '../../utils/utils'
+
+
 
 function FormInput() {
+   
     return (
         <form className="form">
         <div className="chooseWasm__wrapper">
