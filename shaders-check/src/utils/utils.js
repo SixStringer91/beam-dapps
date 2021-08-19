@@ -1,5 +1,6 @@
 const MIN_AMOUNT = 0.00000001;
 const MAX_AMOUNT = 254000000;
+import apiResult from "../utils/apiResult";
 
 export default class Utils {
     static reload () {

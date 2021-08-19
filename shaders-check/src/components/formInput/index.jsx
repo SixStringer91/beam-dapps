@@ -4,7 +4,6 @@ import Utils from '../../utils/utils'
 
 
 function FormInput() {
-   
     return (
         <form className="form">
         <div className="chooseWasm__wrapper">

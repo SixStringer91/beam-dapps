@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Utils from "./utils/utils";
 import init from './utils/drag-n-drop.js'
+import apiResult from "./utils/apiResult";
 import "./App.css";
 import FormInput from "./components/formInput";
 import FormInfo from "./components/formInfo";
@@ -11,25 +12,20 @@ function App() {
 
   
   useEffect(() => {
-    Utils.onLoad( async(beamAPI) => {
+    if(!beamAp){Utils.onLoad( async(beamAPI) => {
       setBeamAp(beamAPI)
-    });
-  },[])
+    });}
+  },[beamAp])
   useEffect(() => {
-    init(async (bytes, uploadDragFiles)=>{
+    if(beamAp){init(async (bytes, uploadDragFiles)=>{
       setDropFiles(uploadDragFiles[0]);
       console.log(beamAp)
       Utils.callApi('manager-view', 'invoke_contract', {
         				contract: bytes,
         				create_tx: false,
         			});
-      let apiRes = json => {
-        const apiAnswer = JSON.parse(json);
-        console.log(apiAnswer.id)
-    }
-      console.log(beamAp.api.callWalletApiResult.connect(apiRes))
-      console.log(apiRes)
-   })
+    beamAp.api.callWalletApiResult.connect(apiResult)
+   })}
   }, [beamAp])
   return (
     <div className="App">
