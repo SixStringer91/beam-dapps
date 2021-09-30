@@ -58,9 +58,6 @@
   display: none;
 }
 .button .titleDOM {
-  position: absolute;
-  left: 0;
-  top: 0;
   display: flex;
   z-index: 1;
   height: 100%;
@@ -74,8 +71,7 @@
 .button .bgSvg .svgBG {
   fill: #20866F;
 }
-
-span {
+.button span {
   margin-left: 11px;
 }
 /*!*****************************************************************************************************************************!*\
@@ -83,7 +79,8 @@ span {
   \*****************************************************************************************************************************/
 .menu {
   margin: 0 auto;
-  width: 525px;
+  width: 100%;
+  max-width: 525px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -162,101 +159,6 @@ span {
   align-content: center;
   align-items: center;
   justify-content: flex-start;
-}
-/*!******************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/options/options.scss ***!
-  \******************************************************************************************************************************/
-.options {
-  margin: 10px auto;
-  padding: 40px 110px;
-  width: 400px;
-  opacity: 0.8;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.options .rate {
-  width: 100%;
-  position: relative;
-}
-.options .rate input {
-  display: block;
-  width: 100%;
-  line-height: 40px;
-  font-family: "Roboto", sans-serif;
-  background: none;
-  border-width: 0;
-  border-bottom: 2px dotted #4a90e2;
-  transition: all 0.2s ease;
-  color: transparent;
-  text-align: center;
-  outline: none;
-  font-size: 20px;
-}
-.options .rate label {
-  display: block;
-  text-align: center;
-  color: #4a90e2;
-  font-size: 20px;
-  font-weight: 300;
-  transform: translateY(-35px);
-  transition: transform 0.2s ease;
-}
-.options .rate input:hover {
-  border-color: #80ffdb;
-  color: wheat;
-}
-.options .rate input:hover + label {
-  transform: translateY(-60px);
-  font-weight: 400;
-  border-color: #80ffdb;
-  color: #80ffdb;
-}
-.options .mode {
-  display: flex;
-  justify-content: space-around;
-  position: relative;
-  margin-bottom: 25px;
-  border-bottom: 2px dotted #4a90e2;
-  width: 100%;
-  line-height: 40px;
-}
-.options .mode .title {
-  top: 0;
-  position: absolute;
-  display: block;
-  text-align: center;
-  color: #4a90e2;
-  font-size: 20px;
-  font-weight: 300;
-  transition: transform 0.2s ease;
-}
-.options .mode .value {
-  opacity: 0;
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
-  color: wheat;
-  transition: all 0.2s ease;
-  user-select: none;
-  font-size: 18px;
-}
-.options .mode input {
-  display: none;
-}
-.options .mode:hover {
-  border-color: #80ffdb;
-}
-.options .mode:hover .value {
-  opacity: 1;
-}
-.options .mode:hover .title {
-  transform: translateY(-25px);
-  font-weight: 400;
-  border-color: #80ffdb;
-  color: #80ffdb;
 }
 /*!**************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/popup/popup.scss ***!
@@ -517,6 +419,9 @@ span {
   font-family: Ubuntu-Bold;
   color: #00ff64;
 }
+.game-info span {
+  margin-left: 10px;
+}
 /*!************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/game/game.scss ***!
   \************************************************************************************************************************/
@@ -639,6 +544,7 @@ span {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  user-select: none;
 }
 
 html {
@@ -647,7 +553,6 @@ html {
 }
 
 body {
-  height: 100%;
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
@@ -686,7 +591,14 @@ body {
   display: none;
 }
 
+.header {
+  max-width: 872px;
+  width: 100%;
+}
+
 .footer {
+  width: 100%;
+  max-width: 872px;
   margin-top: auto;
 }
 
@@ -698,29 +610,80 @@ body {
     opacity: 1;
   }
 }
+@media (max-width: 600px) {
+  .header {
+    margin: 20px 0 !important;
+  }
+  .header .infoblock:first-child {
+    width: max-content !important;
+    background-color: transparent !important;
+    margin: 0 0 !important;
+    padding-left: 10px;
+  }
+  .header .infoblock:first-child .title {
+    display: table;
+    vertical-align: middle;
+  }
+  .header .infoblock:first-child .title svg {
+    display: table-cell;
+  }
+  .header .infoblock:first-child span {
+    margin: 0 0;
+  }
+  .header .infoblock:first-child .after {
+    font-size: 15px !important;
+    margin-left: 3px;
+  }
+
+  .footer {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .footer .on-twitter {
+    display: none;
+  }
+
+  .widget {
+    max-width: 400px;
+    right: 0;
+    left: 0;
+    margin: auto;
+  }
+}
+@media (max-width: 480px) {
+  .header .infoblock:first-child .after {
+    display: none !important;
+  }
+}
+@media (max-height: 880px) {
+  .header {
+    margin-bottom: 0 !important;
+  }
+
+  .game-infoblock {
+    padding-top: 0px !important;
+  }
+
+  .footer {
+    padding-top: 0 !important;
+    padding-bottom: 10px !important;
+  }
+  .footer .errorBlock {
+    padding: 0 !important;
+  }
+}
 /*!****************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/header/header.scss ***!
   \****************************************************************************************************************************/
 .header {
-  width: 872px;
-  padding: 0 10px 0 10px;
-  margin: 0 auto;
+  margin: 40px auto;
   border-radius: 37.5px;
 }
 .header__top {
   display: flex;
   width: 100%;
   align-items: center;
-}
-.header div + div {
-  margin-left: 23px;
-}
-.header div:last-child {
-  margin-right: 23px;
-}
-.header div:first-child {
-  margin-left: 23px;
-  margin-right: auto;
+  justify-content: space-between;
 }
 .header .infoblock {
   width: 314px;
@@ -729,7 +692,6 @@ body {
   user-select: none;
   justify-content: center;
   align-items: center;
-  margin: 40px 493px 3px 14px;
   background-image: url(../assets/1f6a04fafcd3ff0c6de5.svg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -739,6 +701,7 @@ body {
   background-image: url(../assets/4a093ed0e08f508f6f14.svg);
 }
 .header .infoblock span {
+  margin-left: 11px;
   color: white;
   font-size: 20px;
   font-family: Ubuntu-Bold;
@@ -761,7 +724,6 @@ body {
 .header .infoblock:first-child {
   width: 285px;
   height: 75px;
-  padding: 17px 25px 18px;
   border-radius: 37.5px;
   background-color: rgba(255, 255, 255, 0.1);
   cursor: default;
@@ -784,13 +746,11 @@ body {
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/footer/footer.scss ***!
   \****************************************************************************************************************************/
 .footer {
+  padding: 30px 0;
   justify-content: center;
 }
-.footer use {
-  width: 100%;
-  height: 100%;
-}
 .footer .errorBlock {
+  font-family: Ubuntu-Regular;
   text-align: center;
   padding: 5px 0;
   margin: 0 auto;
@@ -803,13 +763,33 @@ body {
 .footer .errorBlock.active {
   opacity: 1;
 }
+.footer .footer-content {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #ffffff;
+}
+.footer .footer-content p {
+  line-height: 26px;
+}
+.footer .footer-content p .follow-txt {
+  font-family: Ubuntu-italic;
+}
+.footer .footer-content p a {
+  text-decoration: none;
+  color: #00ff64;
+  font-family: Ubuntu-BoldItalic;
+}
+.footer .footer-content p .on-twitter {
+  font-family: Ubuntu-Regular;
+}
 /*!****************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/widget/widget.scss ***!
   \****************************************************************************************************************************/
 .widget {
   position: absolute;
   z-index: 1;
-  bottom: 0;
+  bottom: 70px;
   right: 20px;
   transform: translate(500px, 0px);
   background-color: rgba(255, 255, 255, 0.1);
@@ -824,6 +804,9 @@ body {
   border-radius: 10px;
   transition: transform 200ms ease-in;
   font-family: Ubuntu-Bold;
+}
+.widget .loader {
+  margin-right: 10px;
 }
 .widget.active {
   transform: none;
