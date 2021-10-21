@@ -37,11 +37,12 @@ body {
 }
 
 .loader {
-  display: inline-block;
+  display: block;
   margin: 0 auto;
 }
 
 .main {
+  padding-top: 5px;
   height: 100%;
   z-index: 1;
   margin: 0 auto;
@@ -169,10 +170,6 @@ body::-webkit-scrollbar-corner {
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/drop_page/mainPage.scss ***!
   \*********************************************************************************************************************************/
 .upload {
-  display: none;
-}
-
-.upload.active {
   z-index: 999;
   height: 98%;
   margin: 0 auto;
@@ -192,18 +189,21 @@ body::-webkit-scrollbar-corner {
   border: 2px dashed #1af6d6;
   background-color: rgba(26, 246, 214, 0.1);
 }
-.formUpload:hover, .formUpload.hover {
+.formUpload.hover {
   background-color: rgba(26, 246, 214, 0.2);
   cursor: pointer;
 }
-.formUpload:hover .label, .formUpload.hover .label {
+.formUpload.hover * {
+  pointer-events: none;
+}
+.formUpload.hover label {
   opacity: 0.5;
   cursor: pointer;
 }
-.formUpload:hover .text, .formUpload.hover .text {
+.formUpload.hover .text {
   opacity: 0.35;
 }
-.formUpload:hover #iconDrop, .formUpload.hover #iconDrop {
+.formUpload.hover svg {
   opacity: 0.5;
 }
 
@@ -524,6 +524,7 @@ body::-webkit-scrollbar-corner {
 }
 .output__place .list .type {
   color: #99ff99;
+  user-select: none;
 }
 .output__place .list li {
   list-style-type: none;
@@ -605,10 +606,17 @@ body::-webkit-scrollbar-corner {
     max-width: unset;
   }
 }
+/*!***********************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/shared/loader/loader.scss ***!
+  \***********************************************************************************************************************************/
+.loader img {
+  margin: 0 auto;
+  display: block;
+}
 /*!*******************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/shared/role/role.scss ***!
   \*******************************************************************************************************************************/
-.input__role {
+.roles {
   display: flex;
   padding: 30px 20px 20px;
 }
@@ -680,6 +688,7 @@ body::-webkit-scrollbar-corner {
   border-radius: 50%;
   width: 50px;
   height: 50px;
+  display: flex;
   background-color: #042548;
 }
 .widget .loader img {
@@ -722,4 +731,22 @@ body::-webkit-scrollbar-corner {
   100% {
     opacity: 1;
   }
+}
+/*!**********************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/fail_page/fail_page.scss ***!
+  \**********************************************************************************************************************************/
+.fail-page {
+  border-radius: 10px;
+  padding: 10px;
+  max-width: 320px;
+  margin: 60px auto auto;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.fail-page p {
+  text-align: center;
+  padding-bottom: 5px;
+}
+.fail-page .button {
+  margin: 5px auto 0;
 }
