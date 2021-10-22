@@ -196,14 +196,17 @@ body::-webkit-scrollbar-corner {
 .formUpload.hover * {
   pointer-events: none;
 }
-.formUpload.hover label {
+.formUpload.hover .label {
   opacity: 0.5;
   cursor: pointer;
+}
+.formUpload.hover .button {
+  opacity: 0.5;
 }
 .formUpload.hover .text {
   opacity: 0.35;
 }
-.formUpload.hover svg {
+.formUpload.hover #iconDrop {
   opacity: 0.5;
 }
 
