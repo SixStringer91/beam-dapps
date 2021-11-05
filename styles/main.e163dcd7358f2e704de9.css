@@ -3,7 +3,7 @@
   \*************************************************************************************************************/
 @font-face {
   font-family: "Menlo";
-  src: local("Menlo Regular"), url(../assets/fbdea9790dc678cfcc14.woff2) format("woff2"), url(../assets/d2611d1ee550b7d0e618.woff) format("woff");
+  src: local("Menlo Regular"), url(/assets/fbdea9790dc678cfcc14.woff2) format("woff2"), url(/assets/d2611d1ee550b7d0e618.woff) format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -43,20 +43,11 @@ body {
 
 .main {
   padding-top: 5px;
-  height: 100%;
+  padding-bottom: 5px;
+  min-height: 100%;
   z-index: 1;
   margin: 0 auto;
   max-width: 914px;
-}
-
-.form__controls {
-  width: 50%;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
 }
 
 .control {
@@ -93,10 +84,6 @@ body {
   width: 100%;
 }
 
-.output__place {
-  width: 60%;
-}
-
 .roles__label {
   color: yellow;
 }
@@ -128,26 +115,6 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-track {
   background: transparent;
 }
-body::-webkit-scrollbar-track .output__place::-webkit-scrollbar {
-  width: 11px;
-  height: 10px;
-}
-body::-webkit-scrollbar-track .output__place::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.5);
-  border: 3px solid rgba(0, 0, 0, 0);
-  background-clip: padding-box;
-}
-body::-webkit-scrollbar-track .output__place::-webkit-scrollbar-track {
-  background: transparent;
-}
-body::-webkit-scrollbar-track .output__place::-webkit-scrollbar-button {
-  display: none;
-}
-body::-webkit-scrollbar-track .output__place::-webkit-scrollbar-corner {
-  background-color: transparent;
-  display: none;
-}
 
 body::-webkit-scrollbar-button {
   display: none;
@@ -166,9 +133,9 @@ body::-webkit-scrollbar-corner {
     background-position: 50px 0;
   }
 }
-/*!*********************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/drop_page/mainPage.scss ***!
-  \*********************************************************************************************************************************/
+/*!***********************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/pages/drop/drop-page.scss ***!
+  \***********************************************************************************************************************************/
 .upload {
   z-index: 999;
   height: 98%;
@@ -252,16 +219,178 @@ body::-webkit-scrollbar-corner {
   font-size: 14px;
   user-select: none;
 }
-/*!****************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/header/header.scss ***!
-  \****************************************************************************************************************************/
+/*!***********************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/shared/loader/loader.scss ***!
+  \***********************************************************************************************************************************/
+.loader img {
+  margin: 0 auto;
+  display: block;
+}
+/*!*********************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/shared/input/input.scss ***!
+  \*********************************************************************************************************************************/
+.params__input {
+  width: 100%;
+  min-width: 290px;
+  height: 32px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: none;
+  outline: none;
+  font-family: SFProDisplay;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  margin-top: 10px;
+  padding: 0 0 0 14px;
+  color: white;
+}
+
+@media (max-width: 650px) {
+  .params__input {
+    max-width: unset;
+  }
+}
+/*!***********************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/shared/tree-builder/tree-builder.scss ***!
+  \***********************************************************************************************************************************************/
+.output__container * {
+  user-select: text;
+}
+.output__container .bracket {
+  color: #ffffff;
+}
+.output__container button.arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-left: 5px solid #ffffff;
+  vertical-align: middle;
+  background: transparent;
+  cursor: pointer;
+}
+.output__container button.arrow.active {
+  border: 5px solid transparent;
+  border-top: 5px solid #ffffff;
+}
+.output__container li {
+  padding-left: 20px;
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  line-height: 1.33;
+  font-family: Menlo;
+}
+.output__container li span + span {
+  margin-left: 5px;
+}
+.output__container .list .list {
+  display: none;
+  color: #da68f5;
+}
+.output__container .visible {
+  display: block !important;
+}
+.output__container .list .key {
+  color: #ffffff;
+}
+.output__container .list .type {
+  color: #99ff99;
+  user-select: none;
+}
+.output__container .list li {
+  list-style-type: none;
+  color: #00f6d2;
+}
+/*!***********************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/shared/widget/widget.scss ***!
+  \***********************************************************************************************************************************/
+.widget {
+  right: 10px;
+  display: flex;
+  z-index: 9999;
+  color: cornflowerblue;
+  align-items: center;
+  padding: 10px;
+  min-width: 380px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 14px 14px 14px;
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  font-family: Ubuntu-Bold;
+  animation: appearance 0.3s;
+  border-spacing: 12px 1px;
+  margin-bottom: 10px;
+}
+.widget .loader {
+  margin: 0;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  background-color: #042548;
+}
+.widget .loader img {
+  width: 100%;
+}
+.widget.active {
+  display: flex;
+}
+.widget .infoblock-wrapp {
+  font-family: SFProDisplay;
+}
+.widget .infoblock-wrapp .title {
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  margin-bottom: 4px;
+}
+.widget .infoblock-wrapp .value {
+  text-align: left;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.widget svg {
+  margin-left: auto;
+  align-self: flex-start;
+  cursor: pointer;
+}
+.widget svg:hover path {
+  fill: #00ff64;
+}
+
+@keyframes appearance {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/*!***************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/pages/main/header/header.scss ***!
+  \***************************************************************************************************************************************/
 .header {
   background-color: rgba(255, 255, 255, 0.1);
   border: none;
-  display: flex;
-  align-items: center;
   border-radius: 10px;
   padding: 10px;
+}
+.header-information {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 }
 .header__app {
   cursor: pointer;
@@ -316,234 +445,47 @@ body::-webkit-scrollbar-corner {
   color: #8da1ad;
 }
 .header__info .info__data {
-  word-break: break-word;
   color: white;
 }
 
 @media (max-width: 650px) {
-  .header {
+  .header-information {
     flex-direction: column;
   }
   .header__app {
     width: 100%;
     max-width: unset;
   }
-}
-/*!***********************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/shared/action/action.scss ***!
-  \***********************************************************************************************************************************/
-.method__label {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 10px;
-  border-radius: 10px;
-}
-.method__label-title {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 20px 0 22px;
-  height: 56px;
-  align-items: center;
-  cursor: pointer;
-}
-.method__label-title span {
-  color: #fff;
-  text-transform: uppercase;
-}
-.method__label .action__place {
-  display: flex;
-  padding: 0 18px;
-  background-color: rgba(255, 255, 255, 0.05);
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.2s ease-out;
-  border-radius: 0 0 10px 10px;
-  justify-content: space-between;
-}
-
-.method__input {
-  position: absolute;
-  left: -9999px;
-}
-
-.input__action-radio {
-  width: 100%;
-}
-
-.action__request {
-  padding: 14px 0 20px 0;
-  margin: 20px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 14px 30px;
-  cursor: pointer;
-  border-radius: 50px;
-  background-color: #00f6d2;
-  border: none;
-  font-size: 14px;
-  font-weight: bold;
-  color: #032e49;
-  user-select: none;
-}
-.button svg {
-  margin-right: 14px;
-}
-
-.button + .button {
-  margin-left: 20px;
-}
-
-.buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
-.clear {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.3);
-  opacity: 0.3;
-}
-.clear.active {
-  opacity: 1;
-  color: #fff;
-  pointer-events: all;
-}
-.clear.active #iconCancel {
-  opacity: 1;
-}
-
-@media (max-width: 650px) {
-  .action__place {
-    flex-direction: column;
-    width: 100%;
-  }
-  .action__place .action__request {
+  .header .cid-setter {
     margin: 0 auto;
   }
 }
-/*!***********************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/shared/params/params.scss ***!
-  \***********************************************************************************************************************************/
-.params__input {
-  width: 100%;
-  min-width: 290px;
-  height: 32px;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: none;
-  outline: none;
-  font-family: SFProDisplay;
-  font-size: 14px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  margin-top: 10px;
-  padding: 0 0 0 14px;
-  color: white;
-}
-.params__label {
+/*!************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/pages/main/form/req-json/req-json.scss ***!
+  \************************************************************************************************************************************************/
+.json-request {
+  padding: 9px 0;
   display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-  color: white;
+  align-items: center;
+  justify-content: space-between;
 }
-.params__label .name {
-  padding-left: 14px;
-  font-family: SFProDisplay;
-  font-size: 14px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+.json-request .params__input {
+  margin-top: unset;
+  width: 75%;
 }
-.params__label .name span + span {
-  opacity: 0.5;
-  margin-left: 4px;
-}
-
-@media (max-width: 650px) {
-  .params__input {
-    max-width: unset;
-  }
-}
-/*!***********************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/shared/tree_builder/tree_builder.scss ***!
-  \***********************************************************************************************************************************************/
-.output__place * {
-  user-select: text;
-}
-.output__place .bracket {
-  color: #ffffff;
-}
-.output__place button {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border: 5px solid transparent;
-  border-left: 5px solid #ffffff;
-  vertical-align: middle;
-  background: transparent;
-  cursor: pointer;
-}
-.output__place button.active {
-  border: 5px solid transparent;
-  border-top: 5px solid #ffffff;
-}
-.output__place li {
-  padding-left: 20px;
-  font-size: 12px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  letter-spacing: normal;
-  line-height: 1.33;
-  font-family: Menlo;
-}
-.output__place li span + span {
-  margin-left: 5px;
-}
-.output__place .list .list {
-  display: none;
-  color: #da68f5;
-}
-.output__place .visible {
-  display: block !important;
-}
-.output__place .list .key {
-  color: #ffffff;
-}
-.output__place .list .type {
-  color: #99ff99;
-  user-select: none;
-}
-.output__place .list li {
-  list-style-type: none;
-  color: #00f6d2;
-}
-/*!*****************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/shared/output/output_place.scss ***!
-  \*****************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/pages/main/form/output/output-place.scss ***!
+  \**************************************************************************************************************************************************/
 .output__place {
-  padding: 65px 0 20px;
+  padding: 0 0 20px;
+  width: 60%;
+  align-self: stretch;
 }
 .output__place .output__container {
   padding: 20px;
-  height: 100%;
-  min-height: 170px;
   max-width: 554px;
+  min-height: 170px;
+  height: calc(100% - 62px);
   background-color: rgba(255, 255, 255, 0.1);
   overflow: scroll;
   border-radius: 10px;
@@ -609,19 +551,138 @@ body::-webkit-scrollbar-corner {
     max-width: unset;
   }
 }
-/*!***********************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/shared/loader/loader.scss ***!
-  \***********************************************************************************************************************************/
-.loader img {
-  margin: 0 auto;
-  display: block;
+/*!********************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/pages/main/form/params/params.scss ***!
+  \********************************************************************************************************************************************/
+.params__label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  color: white;
 }
-/*!*******************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/shared/role/role.scss ***!
-  \*******************************************************************************************************************************/
+.params__label .name {
+  padding-left: 14px;
+  font-family: SFProDisplay;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+.params__label .name span + span {
+  opacity: 0.5;
+  margin-left: 4px;
+}
+/*!********************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/pages/main/form/action/action.scss ***!
+  \********************************************************************************************************************************************/
+.method__label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+.method__label-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px 0 22px;
+  height: 56px;
+  align-items: center;
+  cursor: pointer;
+}
+.method__label-title span {
+  color: #fff;
+  text-transform: uppercase;
+}
+.method__label .action__place {
+  display: flex;
+  padding: 0 18px;
+  background-color: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+  border-radius: 0 0 10px 10px;
+  justify-content: space-between;
+}
+
+.method__input {
+  position: absolute;
+  left: -9999px;
+}
+
+.action__request {
+  padding-top: 34px;
+  padding-left: 20px;
+  padding-right: 30px;
+  padding-bottom: 40px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 30px;
+  cursor: pointer;
+  border-radius: 50px;
+  background-color: #00f6d2;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  color: #032e49;
+  user-select: none;
+}
+.button svg {
+  margin-right: 14px;
+}
+
+.button + .button {
+  margin-left: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.clear {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.3);
+  opacity: 0.3;
+}
+.clear.active {
+  opacity: 1;
+  color: #fff;
+  pointer-events: all;
+}
+.clear.active #iconCancel {
+  opacity: 1;
+}
+
+@media (max-width: 650px) {
+  .action__place {
+    flex-direction: column;
+    width: 100%;
+  }
+  .action__place .action__request {
+    margin: 0 auto;
+  }
+}
+/*!******************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/pages/main/form/roles/roles.scss ***!
+  \******************************************************************************************************************************************/
 .roles {
   display: flex;
   padding: 30px 20px 20px;
+}
+.roles .button {
+  margin-top: -12px;
 }
 
 .roles__label {
@@ -657,87 +718,9 @@ body::-webkit-scrollbar-corner {
   position: absolute;
   left: -9999px;
 }
-/*!****************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/transactions/transactions.scss ***!
-  \****************************************************************************************************************************************/
-.widgets {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-}
 /*!***********************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/shared/widget/widget.scss ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/pages/fail/fail-page.scss ***!
   \***********************************************************************************************************************************/
-.widget {
-  right: 10px;
-  display: flex;
-  z-index: 9999;
-  color: cornflowerblue;
-  align-items: center;
-  padding: 10px;
-  min-width: 454px;
-  background-color: rgba(255, 255, 255, 0.1);
-  padding: 14px 14px 14px;
-  border-radius: 10px;
-  -webkit-backdrop-filter: blur(24px);
-  backdrop-filter: blur(24px);
-  font-family: Ubuntu-Bold;
-  animation: appearance 0.3s;
-  border-spacing: 12px 1px;
-  margin-bottom: 10px;
-}
-.widget .loader {
-  margin: 0;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  background-color: #042548;
-}
-.widget .loader img {
-  width: 100%;
-}
-.widget.active {
-  display: flex;
-}
-.widget .infoblock-wrapp {
-  font-family: SFProDisplay;
-}
-.widget .infoblock-wrapp .title {
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  margin-bottom: 4px;
-}
-.widget .infoblock-wrapp .value {
-  text-align: left;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
-}
-.widget svg {
-  margin-left: auto;
-  align-self: flex-start;
-  cursor: pointer;
-}
-.widget svg:hover path {
-  fill: #00ff64;
-}
-
-@keyframes appearance {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-/*!**********************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/fail_page/fail_page.scss ***!
-  \**********************************************************************************************************************************/
 .fail-page {
   border-radius: 10px;
   padding: 10px;
@@ -752,4 +735,12 @@ body::-webkit-scrollbar-corner {
 }
 .fail-page .button {
   margin: 5px auto 0;
+}
+/*!************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/components/pages/notifications/notifications.scss ***!
+  \************************************************************************************************************************************************/
+.widgets {
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
