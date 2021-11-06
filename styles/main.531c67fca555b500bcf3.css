@@ -3,7 +3,7 @@
   \*************************************************************************************************************/
 @font-face {
   font-family: "Menlo";
-  src: local("Menlo Regular"), url(/assets/fbdea9790dc678cfcc14.woff2) format("woff2"), url(/assets/d2611d1ee550b7d0e618.woff) format("woff");
+  src: local("Menlo Regular"), url(../assets/fbdea9790dc678cfcc14.woff2) format("woff2"), url(../assets/d2611d1ee550b7d0e618.woff) format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
